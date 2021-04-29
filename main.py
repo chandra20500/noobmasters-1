@@ -1,16 +1,16 @@
 import flask
 import numpy as np
-from flask import jsonify
+from flask import Flask, render_template
 from flask import request
 from operator import add
 import json
 import pandas as pd
 
-app = flask.Flask("__main__")
+app = Flask(__name__, template_folder='templates', static_folder='static')
 
 @app.route('/')
 def my_index():
-	return flask.render_template("index.html",token = "hello world")
+	return flask.render_template('index.html',token = "hello world")
 
 @app.route('/result', methods = ['POST'])
 def result():
